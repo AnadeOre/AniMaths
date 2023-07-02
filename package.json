@@ -18,5 +18,8 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
     "react-latex-next": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0"
   }
 }
