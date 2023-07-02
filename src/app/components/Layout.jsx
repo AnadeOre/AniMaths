@@ -9,7 +9,7 @@ export default function Layout({children, whereTo}) {
   return (
     <div className={styles.container}>
       <Head>
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='../favicon.ico' />
         <meta name='description' content='Learn maths with animations' />
         <meta
           property='og:image'
