@@ -1,4 +1,8 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": {"react/no-unescaped-entities": 0}
+  "extends": ["eslint:recommended", "plugin:react/recommended"], //"extends": "next/core-web-vitals",
+  "rules": {
+    "react/no-unescaped-entities": 0,
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
+  }
 }
