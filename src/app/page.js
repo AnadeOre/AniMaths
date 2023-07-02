@@ -22,7 +22,7 @@ export default function Home() {
 
         <Card
           title='Limits'
-          url='/Limits/Definition'
+          url='/Limits/'
           description='Definition, Properties...'
         />
       </div>

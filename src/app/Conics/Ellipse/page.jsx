@@ -90,7 +90,7 @@ export default function Page() {
   );
 
   return (
-    <PostLayout titleName={'Ellipses'}>
+    <PostLayout titleName={'Ellipses'} whereTo='/Conics'>
       <p>
         An ellipse is a plane curve surrounding two{' '}
         <strong className={stylesPosts.blue}>focal points</strong>, such that,
