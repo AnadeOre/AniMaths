@@ -171,7 +171,7 @@ export default function Parabola() {
   const c = Math.sqrt(width2.x * width2.x + height2.y * height2.y);
 
   return (
-    <PostLayout titleName={'Hyperbola'}>
+    <PostLayout titleName={'Hyperbola'} whereTo='/Conics'>
       <p>
         A hyperbola is the set of all the points in the plane such that the
         diference of the distances of each point to the two{' '}

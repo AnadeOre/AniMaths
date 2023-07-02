@@ -89,7 +89,7 @@ export default function Parabola() {
   const directrixY = (y) => translate.y - py.y;
 
   return (
-    <PostLayout titleName={'Parabolas'}>
+    <PostLayout titleName={'Parabolas'} whereTo='/Conics'>
       <p>
         A Parabola is the set of all points that are equidistant from a fixed
         point called the focus and a fixed line called the directrix. The focus
