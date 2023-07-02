@@ -1,0 +1,28 @@
+.container {
+  min-height: 100vh;
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 0 0 1rem;
+  line-height: 1.15;
+  font-size: 3.6rem;
+  text-align: center;
+}
+
+.description {
+  text-align: center;
+  line-height: 1.5;
+  font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
