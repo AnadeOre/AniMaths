@@ -1,19 +1,22 @@
 'use client';
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 function useDarkMode() {
   const [theme, setTheme] = useState(
-    typeof window !== 'undefined' && localStorage.theme !== 'undefined'
+    typeof window !== 'undefined' && localStorage.theme === undefined
       ? localStorage.theme
-      : 'dark'
+      : 'light'
   );
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (localStorage.theme === undefined) {
+      localStorage.setItem('theme', 'light');
+      document.documentElement.setAttribute('theme', 'light');
+    } else {
       localStorage.setItem('theme', theme);
       document.documentElement.setAttribute('theme', theme);
     }
-    document.documentElement.setAttribute('theme', theme);
+    // }
   }, [theme]);
 
   return [theme, setTheme];
