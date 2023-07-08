@@ -4,51 +4,19 @@ import Card from './components/Card';
 
 export default function Home() {
   return (
-    // <Layout className={styles.container} whereTo={false}>
-    //   <h1 className={styles.title}>
-    //     Welcome to <strong className='text-gradient'>AniMaths!</strong>
-    //   </h1>
-
-    //   <p className={styles.description}>
-    //     The website where you learn maths with animations.
-    //   </p>
-    //   <br />
-    //   <div className='link-card-grid'>
-    //     <Card
-    //       title='Conic Sections'
-    //       url='/Conics/'
-    //       description='Definition. Plots. Translations...'
-    //     />
-
-    //     <Card
-    //       title='Limits'
-    //       url='/Limits/'
-    //       description='Definition, Properties...'
-    //     />
-    //   </div>
-    // </Layout>
-    <main>
+    <div>
       <h1 className={styles.title}>
         Welcome to <strong className='text-gradient'>AniMaths!</strong>
       </h1>
-
       <p className={styles.description}>
         The website where you learn maths with animations.
       </p>
       <br />
       <div className='link-card-grid'>
-        <Card
-          title='Conic Sections'
-          url='/Conics/'
-          description='Definition. Plots. Translations...'
-        />
-
-        <Card
-          title='Limits'
-          url='/Limits/'
-          description='Definition, Properties...'
-        />
+        <Card title='Conic Sections' url='/Conics/' />
+        <Card title='Limits' url='/Limits/' />
+        <Card title='Limit2' url='/Limits/' />
       </div>
-    </main>
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 import './styles/globals.css';
 import styles from './styles/layout.module.css';
-import Link from 'next/link';
 import ThemeMode from './components/ThemeMode';
 import Footer from './components/Footer';
 
@@ -14,7 +13,9 @@ export default function RootLayout({children, whereTo}) {
     <html lang='en' theme='light'>
       <body>
         <div className={styles.topRight}>
-          <ThemeMode />
+          <div>
+            <ThemeMode />
+          </div>
         </div>
         <main>{children}</main>
         <Footer />

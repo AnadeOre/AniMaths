@@ -1,12 +1,11 @@
 import Link from 'next/link';
 
-export default function Footer({title, url, description}) {
+export default function Footer({title, url}) {
   return (
-    <li className='link-card'>
+    <div className='link-card'>
       <Link href={url}>
-        <h3>{title} &rarr;</h3>
-        <p>{description}</p>
+        <h2>{title}</h2>
       </Link>
-    </li>
+    </div>
   );
 }

@@ -14,23 +14,9 @@ export default function Page() {
       <br />
       <br />
       <div className='link-card-grid'>
-        <Card
-          title='Ellipses'
-          url='/Conics/Ellipse'
-          description='Definition, translations, dilatations...'
-        />
-
-        <Card
-          title='Parabolas'
-          url='/Conics/Parabola'
-          description='Definition, Properties...'
-        />
-
-        <Card
-          title='Hyperbolas'
-          url='/Conics/Hyperbola'
-          description='Definition, Properties...'
-        />
+        <Card title='Parabolas' url='/Conics/Parabola' />
+        <Card title='Ellipses' url='/Conics/Ellipse' />
+        <Card title='Hyperbolas' url='/Conics/Hyperbola' />
       </div>
     </div>
   );
