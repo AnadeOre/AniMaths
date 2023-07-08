@@ -1,18 +1,24 @@
 import './styles/globals.css';
-import {Inter} from 'next/font/google';
-
-const inter = Inter({subsets: ['latin']});
+import styles from './styles/layout.module.css';
+import Link from 'next/link';
+import ThemeMode from './components/ThemeMode';
+import Footer from './components/Footer';
 
 export const metadata = {
   title: 'AniMaths',
   description: 'The website where you learn maths with animations.',
 };
 
-export default function RootLayout({children}) {
+export default function RootLayout({children, whereTo}) {
   return (
     <html lang='en' theme='light'>
-      <link rel='icon' href='./favicon.ico' />
-      <body className={inter.className}>{children}</body>
+      <body>
+        <div className={styles.topRight}>
+          <ThemeMode />
+        </div>
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

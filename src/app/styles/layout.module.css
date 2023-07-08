@@ -50,7 +50,7 @@
 
 .topRight {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1vh;
+  right: 15vw;
   margin: 20px;
 }

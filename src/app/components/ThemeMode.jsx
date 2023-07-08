@@ -2,7 +2,7 @@
 import useDarkMode from './useDarkMode';
 import {BsSun, BsMoon} from 'react-icons/bs';
 
-function Theme() {
+function ThemeMode() {
   const [colorTheme, setTheme] = useDarkMode();
   const handleClick = () => {
     if (colorTheme === 'dark') setTheme('light');
@@ -16,4 +16,4 @@ function Theme() {
   );
 }
 
-export default Theme;
+export default ThemeMode;
