@@ -16,6 +16,11 @@ export default function Home() {
         <Card title='Conic Sections' url='/Conics/' />
         <Card title='Limits' url='/Limits/' />
         <Card title='Limit2' url='/Limits/' />
+        <Card title='Limit2' url='/Limits/' />
+        <Card title='Limit3' url='/Limits/' />
+        <Card title='Limit4' url='/Limits/' />
+        <Card title='Limit5' url='/Limits/' />
+        <Card title='Limit6' url='/Limits/' />
       </div>
     </div>
   );

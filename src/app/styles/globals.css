@@ -100,12 +100,14 @@ h1 {
 
 .link-card-grid {
   /* border: 4px solid red; */
-  display: flex;
-  max-width: 800px;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  /* grid-auto-rows: 100px; */
+  max-width: 550px;
+  /* flex-direction: row;
+  flex-wrap: wrap; */
+  /* justify-content: center; */
   margin: 30px auto;
 }
 
@@ -115,9 +117,10 @@ strong {
 
 /* CARDS */
 .link-card {
-  width: 45%;
+  /* width: 45%;
   max-width: 270px;
-  align-items: center;
+  align-items: center; */
+  /* margin: ; */
   list-style: none;
   display: flex;
   padding: 0.25rem;
