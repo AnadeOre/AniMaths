@@ -1,6 +1,5 @@
 'use client';
 import * as React from 'react';
-import {useState} from 'react';
 import Latex from 'react-latex-next';
 import PostLayout from '../../components/PostLayout.jsx';
 import stylesPosts from '../../components/Posts.module.css';

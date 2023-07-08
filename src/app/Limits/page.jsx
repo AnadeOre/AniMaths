@@ -1,14 +1,17 @@
 'use client';
 import styles from '../styles/Home.module.css';
 import Card from '../components/Card';
-import Layout from '../components/Layout';
+import ButtonHome from '../components/ButtonHome';
 
 export default function Page() {
   return (
-    <Layout className={styles.container} whereTo='/'>
+    <div className={styles.container}>
+      <ButtonHome whereTo='/' />
       <h1 className={styles.title}>
         <strong className='text-gradient'>Limits</strong>
       </h1>
+      <br />
+      <br />
       <br />
       <div className='link-card-grid'>
         <Card
@@ -23,6 +26,6 @@ export default function Page() {
           description='Definition, Examples...'
         />
       </div>
-    </Layout>
+    </div>
   );
 }
