@@ -3,7 +3,9 @@ import {useEffect, useState} from 'react';
 
 function useDarkMode() {
   const [theme, setTheme] = useState(
-    localStorage.theme !== undefined ? localStorage.theme : 'light'
+    typeof window !== 'undefined' && localStorage.theme !== undefined
+      ? localStorage.theme
+      : 'light'
   );
 
   useEffect(() => {
