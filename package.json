@@ -9,16 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
     "country-flag-icons": "^1.5.7",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.7",
     "lodash": "^4.17.21",
     "mafs": "^0.17.1",
     "next": "13.4.7",
+    "next-redux-wrapper": "^8.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.10.1",
-    "react-latex-next": "^2.2.0"
+    "react-latex-next": "^2.2.0",
+    "react-redux": "^8.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0"
