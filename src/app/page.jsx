@@ -16,7 +16,7 @@ export default function Home() {
         </p>
       ) : (
         <p className={styles.description}>
-          La página web donde aprendés matemática con animaciones.
+          La página web para aprender matemática con animaciones.
         </p>
       )}
       <br />
