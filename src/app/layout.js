@@ -16,7 +16,7 @@ export default function RootLayout({children}) {
         <meta name='description' content='Learn maths with animations' />
         <body>
           <div className={styles.topRight}>
-            <div>
+            <div className={styles.innerTopRight}>
               <ThemeMode />
               <LangToggle />
             </div>

@@ -59,6 +59,11 @@
   padding: 10px;
   justify-content: flex-end;
 }
+.innerTopRight {
+  display: grid;
+  grid-template-columns: 20px 20px;
+  gap: 10px;
+}
 
 .faded {
   opacity: 20%;
