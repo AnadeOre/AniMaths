@@ -622,8 +622,8 @@ export default function Parabola() {
       ) : (
         <p>
           La fórmula de una hipérbola{' '}
-          <strong>{isVertical3 ? 'vertical' : 'horizontal'}</strong>
-          con vértice en{' '}
+          <strong>{isVertical3 ? 'vertical' : 'horizontal'}</strong> con vértice
+          en{' '}
           <strong className={stylesPosts.orange}>
             <Latex>$(h,k)$</Latex>
           </strong>{' '}
