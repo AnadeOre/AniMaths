@@ -4,6 +4,7 @@ import {useState} from 'react';
 import PostLayout from '../../components/PostLayout.jsx';
 import Latex from 'react-latex-next';
 import stylesPosts from '../../components/Posts.module.css';
+import {useSelector} from 'react-redux';
 
 import {
   roundTwoDecimals,
@@ -170,19 +171,43 @@ export default function Parabola() {
 
   const c = Math.sqrt(width2.x * width2.x + height2.y * height2.y);
 
+  const lang = useSelector((state) => state.langToggle.value);
+
   return (
-    <PostLayout titleName={'Hyperbola'} whereTo='/Conics'>
-      <p>
-        A hyperbola is the set of all the points in the plane such that the
-        diference of the distances of each point to the two{' '}
-        <strong className={stylesPosts.blue}>focal points</strong> is constant.
-      </p>
+    <PostLayout
+      titleName={lang === 'en' ? 'Hyperbola' : 'Hipérbola'}
+      whereTo='/Conics'>
+      {lang === 'en' ? (
+        <p>
+          A hyperbola is the set of all the points in the plane such that the
+          diference of the distances of each point to the two{' '}
+          <strong className={stylesPosts.blue}>focal points</strong> is
+          constant.
+        </p>
+      ) : (
+        <p>
+          Una hipérbola es el conjunto de todos los puntos en el plano tales que
+          la diferencia de las distancias del punto a cada uno de los dos{' '}
+          <strong className={stylesPosts.blue}>puntos focales</strong> es
+          constante.
+        </p>
+      )}
       <br />
-      <p>
-        Test the definition yourself, by moving{' '}
-        <strong className={stylesPosts.green}>the point</strong> on the ellipse,
-        notice how the sum of the distances is always <Latex>$6$</Latex>.
-      </p>
+      {lang === 'en' ? (
+        <p>
+          Test the definition yourself, by moving{' '}
+          <strong className={stylesPosts.green}>the point</strong> on the
+          hyperbola, notice how the sum of the distances is always{' '}
+          <Latex>$6$</Latex>.
+        </p>
+      ) : (
+        <p>
+          Probá la definición vos mismo moviendo{' '}
+          <strong className={stylesPosts.green}>el punto</strong> en la
+          hipérobla, notá como la diferencia de las distancias es siempre{' '}
+          <Latex>$2.$</Latex>
+        </p>
+      )}
       <br />
       <Mafs viewBox={{x: [-2, 2], y: [-3, 3]}}>
         <Coordinates.Cartesian />
@@ -213,48 +238,95 @@ export default function Parabola() {
           attachDistance={15}>
           d = {d2}
         </Text>
-        <Text x={-1} y={-2.5}>
-          Distances difference = {roundTwoDecimals(diffDistances)}
-        </Text>
+        {lang === 'en' ? (
+          <Text x={-1} y={-2.5}>
+            Distances difference = {roundTwoDecimals(diffDistances)}
+          </Text>
+        ) : (
+          <Text x={-1} y={-2.5}>
+            Diferencia de distancias = {roundTwoDecimals(diffDistances)}
+          </Text>
+        )}
         {pointOnHyperbola1.element}
       </Mafs>
       <br />
       <br />
-      <p>There are two types of hyperbolas, horizontals or verticals.</p>
+      {lang === 'en' ? (
+        <p>There are two types of hyperbolas, horizontals and verticals.</p>
+      ) : (
+        <p>Hay dos tipos de hipérbolas, horizontales y verticales.</p>
+      )}
       <br />
       <div
         onClick={() => setIsVertical(!isVertical)}
         className={stylesPosts.linkCard}>
-        <h4 className={stylesPosts.textCard}>
-          Switch to {isVertical ? 'horizontal' : 'vertical'}
-        </h4>
+        {lang === 'en' ? (
+          <h4 className={stylesPosts.textCard}>
+            Switch to {isVertical ? 'horizontal' : 'vertical'}
+          </h4>
+        ) : (
+          <h4 className={stylesPosts.textCard}>
+            Cambiar a {isVertical ? 'horizontal' : 'vertical'}
+          </h4>
+        )}
       </div>
-      <p>
-        The formula of a{' '}
-        <strong>{isVertical ? 'vertical' : 'horizontal'}</strong> hyperbola with
-        vertex at the origin <Latex>$(0,0)$</Latex> is
-      </p>
+      {lang === 'en' ? (
+        <p>
+          The formula of a{' '}
+          <strong>{isVertical ? 'vertical' : 'horizontal'}</strong> hyperbola
+          with vertex at the origin <Latex>$(0,0)$</Latex> is
+        </p>
+      ) : (
+        <p>
+          La fórmula para una hipérbola{' '}
+          <strong>{isVertical ? 'vertical' : 'horizontal'}</strong> con vértice
+          en el origen <Latex>$(0,0)$</Latex> es
+        </p>
+      )}
       <Latex>
         {isVertical
           ? '$$\\frac{y^2}{b^2} - \\frac{x^2}{a^2} = 1$$'
           : '$$\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$$'}
       </Latex>
-      <p>
-        where <Latex>$a$ and $b$</Latex> will determine the{' '}
-        <strong className={stylesPosts.pink}>shape of the hyperbola</strong> and
-        of its <strong className={stylesPosts.yellow}>asymptotes</strong>.
-      </p>
+      {lang === 'en' ? (
+        <p>
+          where <Latex>$a$ and $b$</Latex> will determine the{' '}
+          <strong className={stylesPosts.pink}>shape of the hyperbola</strong>{' '}
+          and of its <strong className={stylesPosts.yellow}>asymptotes</strong>.
+        </p>
+      ) : (
+        <p>
+          donde <Latex>$a$ y $b$</Latex> determinarán la{' '}
+          <strong className={stylesPosts.pink}>forma de la hipérbola</strong> y
+          de sus <strong className={stylesPosts.yellow}>asíntotas</strong>.
+        </p>
+      )}
       <br />
-      <p>For example, the following hyperbola has formula:</p>
+      {lang === 'en' ? (
+        <p>For example, the following hyperbola has formula:</p>
+      ) : (
+        <p>Por ejemplo, la siguiente hipérbola tiene fórmula:</p>
+      )}
       <Latex>{`$$\\frac{x^2}{(${roundTwoDecimals(
         Math.abs(width.x)
       )})^2} + \\frac{y^2}{(${roundTwoDecimals(
         Math.abs(height.y)
       )})^2} = 1,$$`}</Latex>
-      and <strong className={stylesPosts.yellow}>asymptotes</strong>{' '}
-      <Latex>{`$y=\\pm\\frac{${roundTwoDecimals(
-        Math.abs(height.y)
-      )}}{${roundTwoDecimals(Math.abs(width.x))}}x$`}</Latex>
+      {lang === 'en' ? (
+        <p>
+          and <strong className={stylesPosts.yellow}>asymptotes</strong>{' '}
+          <Latex>{`$y=\\pm\\frac{${roundTwoDecimals(
+            Math.abs(height.y)
+          )}}{${roundTwoDecimals(Math.abs(width.x))}}x$`}</Latex>
+        </p>
+      ) : (
+        <p>
+          y <strong className={stylesPosts.yellow}>asíntotas</strong>{' '}
+          <Latex>{`$y=\\pm\\frac{${roundTwoDecimals(
+            Math.abs(height.y)
+          )}}{${roundTwoDecimals(Math.abs(width.x))}}x$`}</Latex>
+        </p>
+      )}
       <br />
       <br />
       <Mafs viewBox={{x: [-4, 4], y: [-3, 3]}}>
@@ -285,56 +357,112 @@ export default function Parabola() {
       <div
         onClick={() => setIsVertical1(!isVertical1)}
         className={stylesPosts.linkCard}>
-        <h4 className={stylesPosts.textCard}>
-          Switch to {isVertical1 ? 'horizontal' : 'vertical'}
-        </h4>
+        {lang === 'en' ? (
+          <h4 className={stylesPosts.textCard}>
+            Switch to {isVertical1 ? 'horizontal' : 'vertical'}
+          </h4>
+        ) : (
+          <h4 className={stylesPosts.textCard}>
+            Cambiar a {isVertical1 ? 'horizontal' : 'vertical'}
+          </h4>
+        )}
       </div>
       <br />
       {isVertical1 ? (
         <>
-          <p>
-            <strong>Vertical</strong> hyperbola with vertex at{' '}
-            <Latex>$(0,0)$</Latex>
-          </p>
+          {lang === 'en' ? (
+            <p>
+              <strong>Vertical</strong> hyperbola with vertex at{' '}
+              <Latex>$(0,0)$</Latex>
+            </p>
+          ) : (
+            <p>
+              Hipérbola <strong>vertical</strong> con vértice en{' '}
+              <Latex>$(0,0)$</Latex>
+            </p>
+          )}
           <ul>
             <li>
-              <strong className={stylesPosts.blue}>Focal points</strong> :{' '}
-              <Latex>$(0,\pm c)$</Latex>.
+              {lang === 'en' ? (
+                <strong className={stylesPosts.blue}>Focal points</strong>
+              ) : (
+                <strong className={stylesPosts.blue}>Puntos focales</strong>
+              )}
+              : <Latex>$(0,\pm c)$</Latex>.
             </li>
             <li>
-              <strong className={stylesPosts.yellow}>Asymptotes</strong>:{' '}
-              <Latex>{`$y=\\pm\\frac{b}{a}x$`}</Latex>.
+              {lang === 'en' ? (
+                <strong className={stylesPosts.yellow}>Asymptotes</strong>
+              ) : (
+                <strong className={stylesPosts.yellow}>Asíntotas</strong>
+              )}
+              : <Latex>{`$y=\\pm\\frac{b}{a}x$`}</Latex>.
             </li>
           </ul>
         </>
       ) : (
         <>
-          <p>
-            <strong>Horizontal</strong> hyperbola with vertex at{' '}
-            <Latex>$(0,0)$</Latex>
-          </p>
+          {lang === 'en' ? (
+            <p>
+              <strong>Horizontal</strong> hyperbola with vertex at{' '}
+              <Latex>$(0,0)$</Latex>
+            </p>
+          ) : (
+            <p>
+              Hipérbola <strong>horizontal</strong> con vértice en{' '}
+              <Latex>$(0,0)$</Latex>
+            </p>
+          )}
           <ul>
             <li>
-              <strong className={stylesPosts.blue}>Focal points</strong> :{' '}
-              <Latex>$(\pm c,0)$</Latex>.
+              {lang === 'en' ? (
+                <strong className={stylesPosts.blue}>Focal points</strong>
+              ) : (
+                <strong className={stylesPosts.blue}>Puntos focales</strong>
+              )}
+              : <Latex>$(\pm c,0)$</Latex>.
             </li>
             <li>
-              <strong className={stylesPosts.yellow}>Asymptotes</strong>:{' '}
-              <Latex>{`$y=\\pm\\frac{b}{a}x$`}</Latex>.
+              {lang === 'en' ? (
+                <strong className={stylesPosts.yellow}>Asymptotes</strong>
+              ) : (
+                <strong className={stylesPosts.yellow}>Asíntotas</strong>
+              )}
+              : <Latex>{`$y=\\pm\\frac{b}{a}x$`}</Latex>.
             </li>
           </ul>
         </>
       )}
-      Where <Latex>{'$c$ is  calculated as $c = \\sqrt{a^2+b^2}.$'}</Latex>
-      <p>
-        Let's see how the{' '}
-        <strong className={stylesPosts.blue}>focal points</strong> affect the
-        shape of the hyperbola for a fixed{' '}
-        <strong className={stylesPosts.pink}>
-          <Latex>{isVertical1 ? '$b$' : '$a$'}</Latex>
-        </strong>
-        .{/* . What shape do we get when <Latex>$c=0$</Latex>? */}
-      </p>
+      {lang === 'en' ? (
+        <p>
+          Where <Latex>{'$c$ is  calculated as $c = \\sqrt{a^2+b^2}.$'}</Latex>
+        </p>
+      ) : (
+        <p>
+          Donde <Latex>{'$c$ es calculado como $c = \\sqrt{a^2+b^2}.$'}</Latex>
+        </p>
+      )}
+      {lang === 'en' ? (
+        <p>
+          Let's see how the{' '}
+          <strong className={stylesPosts.blue}>focal points</strong> affect the
+          shape of the hyperbola for a fixed{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>{isVertical1 ? '$b$' : '$a$'}</Latex>
+          </strong>
+          .
+        </p>
+      ) : (
+        <p>
+          Veamos como los{' '}
+          <strong className={stylesPosts.blue}>puntos focales</strong> afectan a
+          la forma de la hipérbola para{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>{isVertical1 ? '$b$' : '$a$'}</Latex>
+          </strong>{' '}
+          fijo.
+        </p>
+      )}
       <br />
       <Mafs viewBox={{x: [-4, 4], y: [-4, 4]}}>
         <Coordinates.Cartesian />
@@ -378,65 +506,140 @@ export default function Parabola() {
           </>
         )}
       </Mafs>
-      <h3>And what happens if we change the center?</h3>
-      <p>
-        If we move the hyperbola horizontally or vertically, we need to aplly
-        the corresponding transformations to the variables{' '}
-        <Latex>$x$ and $y$.</Latex>
-      </p>
+      {lang === 'en' ? (
+        <h3>And what happens if we change the center?</h3>
+      ) : (
+        <h3>¿Y qué pasa si cambiamos el centro?</h3>
+      )}
+      {lang === 'en' ? (
+        <p>
+          If we move the hyperbola horizontally or vertically, we need to aply
+          the corresponding transformations to the variables{' '}
+          <Latex>$x$ and $y$.</Latex>
+        </p>
+      ) : (
+        <p>
+          Si movemos la hipérbola horizontal o verticalmente, tenemos que
+          aplicar las transformaciones correspondientes a las variables{' '}
+          <Latex>$x$ e $y$.</Latex>
+        </p>
+      )}
       <ul>
         <li>
-          <p>
-            Horizontal shift of{' '}
-            <Latex>$h$ units: Change the value of $x$ for $x-h$</Latex>.
-          </p>
+          {lang === 'en' ? (
+            <p>
+              Horizontal shift of{' '}
+              <Latex>$h$ units: Change the value of $x$ for $x-h$</Latex>.
+            </p>
+          ) : (
+            <p>
+              Desplazamiento horizontal de{' '}
+              <Latex>$h$ unidades: Cambiar el valor de $x$ por $x-h$</Latex>.
+            </p>
+          )}
         </li>
         <li>
-          <p>
-            Vertical shift of{' '}
-            <Latex>$k$ units: Change the value of $y$ for $y-k$</Latex>.
-          </p>
+          {lang === 'en' ? (
+            <p>
+              Vertical shift of{' '}
+              <Latex>$k$ units: Change the value of $y$ for $y-k$</Latex>.
+            </p>
+          ) : (
+            <p>
+              Desplazamiento vertical de{' '}
+              <Latex>$k$ unidades: Cambiar el valor de $y$ por $y-k$</Latex>.
+            </p>
+          )}
         </li>
       </ul>
-      Together with the variables <Latex>$x$ and $y$</Latex>, the other elements
-      affected by the translation are the{' '}
-      <strong className={stylesPosts.blue}>focus points</strong>, these are now{' '}
-      <strong className={stylesPosts.blue}>
-        <Latex>$(\pm c + h, k)$</Latex>
-      </strong>{' '}
-      for horizontal hyperbolas and{' '}
-      <strong className={stylesPosts.blue}>
-        <Latex>$(h, \pm c +k)$</Latex>
-      </strong>{' '}
-      for vertical hyperbolas.
+      {lang === 'en' ? (
+        <p>
+          Together with the variables <Latex>$x$ and $y$</Latex>, the other
+          elements affected by the translation are the{' '}
+          <strong className={stylesPosts.blue}>focus points</strong>, these are
+          now{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(\pm c + h, k)$</Latex>
+          </strong>{' '}
+          for horizontal hyperbolas and{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(h, \pm c +k)$</Latex>
+          </strong>{' '}
+          for vertical hyperbolas.
+        </p>
+      ) : (
+        <p>
+          Junto con las variables <Latex>$x$ e $y$</Latex>, los otros elementos
+          afectados por la traslación son los{' '}
+          <strong className={stylesPosts.blue}>puntos focales</strong>, éstos
+          ahora son{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(\pm c + h, k)$</Latex>
+          </strong>{' '}
+          para hipérbolas horizontales y{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(h, \pm c +k)$</Latex>
+          </strong>{' '}
+          para hipérbolas verticales.
+        </p>
+      )}
       <br />
-      <p>
-        Perfect! Now let's perform this transformations on the formula of the
-        hyperbola.
-      </p>
+      {lang === 'en' ? (
+        <p>
+          Perfect! Now let's perform this transformations on the formula of the
+          hyperbola.
+        </p>
+      ) : (
+        <p>
+          Perfecto! Ahora hagamos estas transformaciones en la fórmula de la
+          hipérbola.
+        </p>
+      )}
       <br />
       <div
         onClick={() => setIsVertical3(!isVertical3)}
         className={stylesPosts.linkCard}>
-        <h4 className={stylesPosts.textCard}>
-          Switch to {isVertical3 ? 'horizontal' : 'vertical'}
-        </h4>
+        {lang === 'en' ? (
+          <h4 className={stylesPosts.textCard}>
+            Switch to {isVertical3 ? 'horizontal' : 'vertical'}
+          </h4>
+        ) : (
+          <h4 className={stylesPosts.textCard}>
+            Cambiar a {isVertical3 ? 'horizontal' : 'vertical'}
+          </h4>
+        )}
       </div>
-      <p>
-        The formula of a{' '}
-        <strong>{isVertical3 ? 'vertical' : 'horizontal'}</strong> hyperbola
-        with vertex in{' '}
-        <strong className={stylesPosts.orange}>
-          <Latex>$(h,k)$</Latex>
-        </strong>{' '}
-        is:
-      </p>
+      {lang === 'en' ? (
+        <p>
+          The formula of a{' '}
+          <strong>{isVertical3 ? 'vertical' : 'horizontal'}</strong> hyperbola
+          with vertex in{' '}
+          <strong className={stylesPosts.orange}>
+            <Latex>$(h,k)$</Latex>
+          </strong>{' '}
+          is:
+        </p>
+      ) : (
+        <p>
+          La fórmula de una hipérbola{' '}
+          <strong>{isVertical3 ? 'vertical' : 'horizontal'}</strong> con vértice
+          en{' '}
+          <strong className={stylesPosts.orange}>
+            <Latex>$(h,k)$</Latex>
+          </strong>{' '}
+          es:
+        </p>
+      )}
       <Latex>
         {isVertical3
           ? '$$\\frac{(y-k)^2}{b^2} - \\frac{(x-h)^2}{a^2} = 1$$'
           : '$$\\frac{(x-h)^2}{a^2} - \\frac{(y-k)^2}{b^2} = 1$$'}
       </Latex>
-      <p>let's see what this looks like. The fomula:</p>
+      {lang === 'en' ? (
+        <p>let's see what this looks like. The fomula:</p>
+      ) : (
+        <p>veamos como se vé esto. La fórmula:</p>
+      )}
       <Latex>
         {isVertical3
           ? `$$\\frac{\\big(y-(${roundTwoDecimals(
@@ -450,7 +653,11 @@ export default function Parabola() {
               translate.y
             )})\\big)^2}{b^2} = 1,$$`}
       </Latex>
-      <p>gives us the following hyperbola:</p>
+      {lang === 'en' ? (
+        <p>gives us the following hyperbola:</p>
+      ) : (
+        <p>nos da la siguiente hipérbola:</p>
+      )}
       <br />
       <Mafs viewBox={{x: [-3, 3], y: [-3, 3]}}>
         <Coordinates.Cartesian />
@@ -479,25 +686,40 @@ export default function Parabola() {
       </Mafs>
       <br />
       <br />
-      <h3>To sum up:</h3>
+      {lang === 'en' ? <h3>To sum up:</h3> : <h3>En resumen:</h3>}
       <br />
       <div
         onClick={() => setIsVertical5(!isVertical5)}
         className={stylesPosts.linkCard}>
-        <h4 className={stylesPosts.textCard}>
-          Switch to {isVertical5 ? 'horizontal' : 'vertical'}
-        </h4>
+        {lang === 'en' ? (
+          <h4 className={stylesPosts.textCard}>
+            Switch to {isVertical5 ? 'horizontal' : 'vertical'}
+          </h4>
+        ) : (
+          <h4 className={stylesPosts.textCard}>
+            Cambiar a {isVertical5 ? 'horizontal' : 'vertical'}
+          </h4>
+        )}
       </div>
       <br />
-      <p>
-        {' '}
-        We've learnt how to plot a general{' '}
-        <strong>{isVertical5 ? 'vertical' : 'horizontal'}</strong> hyperbola
-        with:
-      </p>
+      {lang === 'en' ? (
+        <p>
+          {' '}
+          We've learnt how to plot a general{' '}
+          <strong>{isVertical5 ? 'vertical' : 'horizontal'}</strong> hyperbola
+          with:
+        </p>
+      ) : (
+        <p>
+          {' '}
+          Hemos aprendido como graficar una hipérbola{' '}
+          <strong>{isVertical5 ? 'vertical' : 'horizontal'}</strong> general,
+          con:
+        </p>
+      )}
       <ul>
         <li>
-          vertex at{' '}
+          {lang === 'en' ? 'vertex at ' : 'vértice en '}
           <strong className={stylesPosts.orange}>
             <Latex>{`$(h,k) = (${roundTwoDecimals(
               translate2.x
@@ -505,17 +727,19 @@ export default function Parabola() {
           </strong>
         </li>
         <li>
-          horizontal and vertical axis lengths{' '}
+          {lang === 'en'
+            ? 'horizontal and vertical axis lengths '
+            : 'longitud de ejes horizontales y verticales '}
           <strong className={stylesPosts.pink}>
             <Latex>{`$a = ${roundTwoDecimals(width.x)}$`}</Latex>
           </strong>{' '}
-          and{' '}
+          {lang === 'en' ? 'and ' : 'y '}
           <strong className={stylesPosts.pink}>
             <Latex>{`$b = ${roundTwoDecimals(height2.y)}$`}</Latex>
           </strong>
         </li>
         <li>
-          focus point{' '}
+          {lang === 'en' ? 'focus point ' : 'puntos focales '}
           <strong className={stylesPosts.blue}>
             <Latex>
               {isVertical5
@@ -531,7 +755,7 @@ export default function Parabola() {
           </strong>
         </li>
         <li>
-          asymptote{' '}
+          {lang === 'en' ? 'asymptote ' : 'asíntota '}
           <strong className={stylesPosts.yellow}>
             <Latex>
               {isVertical5

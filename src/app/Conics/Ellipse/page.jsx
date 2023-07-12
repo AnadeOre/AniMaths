@@ -4,6 +4,7 @@ import {useState} from 'react';
 import Latex from 'react-latex-next';
 import PostLayout from '../../components/PostLayout.jsx';
 import stylesPosts from '../../components/Posts.module.css';
+import {useSelector} from 'react-redux';
 
 import {
   roundTwoDecimals,
@@ -89,20 +90,44 @@ export default function Page() {
     Math.abs(width2.x * width2.x - height2.y * height2.y)
   );
 
+  const lang = useSelector((state) => state.langToggle.value);
+
   return (
-    <PostLayout titleName={'Ellipses'} whereTo='/Conics'>
-      <p>
-        An ellipse is a plane curve surrounding two{' '}
-        <strong className={stylesPosts.blue}>focal points</strong>, such that,
-        for all points on the curve, the sum of the distances to the{' '}
-        <strong className={stylesPosts.blue}>focal points</strong> is constant.
-      </p>
+    <PostLayout
+      titleName={lang === 'en' ? 'Ellipses' : 'Elipses'}
+      whereTo='/Conics'>
+      {lang === 'en' ? (
+        <p>
+          An ellipse is a plane curve surrounding two{' '}
+          <strong className={stylesPosts.blue}>focal points</strong>, such that,
+          for all points on the curve, the sum of the distances to the{' '}
+          <strong className={stylesPosts.blue}>focal points</strong> is
+          constant.
+        </p>
+      ) : (
+        <p>
+          Una elipse es una curva plana que rodea dos{' '}
+          <strong className={stylesPosts.blue}>puntos focales</strong>, tales
+          que, para todos los puntos en la curva, la suma de las distancias a
+          los <strong className={stylesPosts.blue}>puntos focales</strong> es
+          constante.
+        </p>
+      )}
       <br />
-      <p>
-        Test the definition yourself, by moving{' '}
-        <strong className={stylesPosts.green}>the point</strong> on the ellipse,
-        notice how the sum of the distances is always <Latex>$6$</Latex>.
-      </p>
+      {lang === 'en' ? (
+        <p>
+          Test the definition yourself by moving{' '}
+          <strong className={stylesPosts.green}>the point</strong> on the
+          ellipse, notice how the sum of the distances is always{' '}
+          <Latex>$6$</Latex>.
+        </p>
+      ) : (
+        <p>
+          Probá la definición vos mismo moviendo{' '}
+          <strong className={stylesPosts.green}>el punto</strong> en la elipse,
+          notá como la suma de las distancias es siempre <Latex>$6.$</Latex>
+        </p>
+      )}
       <br />
       <Mafs viewBox={{x: [-4, 4], y: [-3, 3]}}>
         <Coordinates.Cartesian />
@@ -130,27 +155,55 @@ export default function Page() {
           attachDistance={15}>
           d = {d2}
         </Text>
-        <Text x={3} y={3}>
-          Distances sum = {sumDistances}
-        </Text>
+        {/* TRANSLATION */}
+        {lang === 'en' ? (
+          <Text x={3} y={3}>
+            Distances sum = {sumDistances}
+          </Text>
+        ) : (
+          <Text x={3} y={3}>
+            Suma de distancias = {sumDistances}
+          </Text>
+        )}
         {pointOnEllipse.element}
         <Point x={-2} y={0} color={Theme.blue} />
         <Point x={2} y={0} color={Theme.blue} />
       </Mafs>
       <br />
-      <p>
-        The formula of an ellipse centered at the origin <Latex>$(0,0)$</Latex>{' '}
-        is
-      </p>
+      {lang === 'en' ? (
+        <p>
+          The formula of an ellipse centered at the origin{' '}
+          <Latex>$(0,0)$</Latex> is
+        </p>
+      ) : (
+        <p>
+          La fórmula de una elipse centrada en el origen <Latex>$(0,0)$</Latex>{' '}
+          es
+        </p>
+      )}
       <Latex>{'$$\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1,$$'}</Latex>
-      <p>
-        where <Latex>$a$ and $b$</Latex> are the{' '}
-        <strong className={stylesPosts.pink}>
-          horizontal and vertical diameter lengths
-        </strong>{' '}
-        respectively.
-      </p>
-      <p>For example, the following ellipse has formula:</p>
+      {lang === 'en' ? (
+        <p>
+          where <Latex>$a$ and $b$</Latex> are the{' '}
+          <strong className={stylesPosts.pink}>
+            horizontal and vertical diameter lengths
+          </strong>{' '}
+          respectively.
+        </p>
+      ) : (
+        <p>
+          donde <Latex>$a$ y $b$</Latex> son los{' '}
+          <strong className={stylesPosts.pink}>
+            diámetros horizontales y verticales
+          </strong>{' '}
+          respectivamente.
+        </p>
+      )}
+      {lang === 'en' ? (
+        <p>For example, the following ellipse has formula:</p>
+      ) : (
+        <p>Por ejemplo, la siguiente elipse tiene fórmula:</p>
+      )}
       <Latex>{`$$\\frac{x^2}{(${roundTwoDecimals(
         Math.abs(width.x)
       )})^2} + \\frac{y^2}{(${roundTwoDecimals(
@@ -180,23 +233,46 @@ export default function Page() {
         {height.element}
       </Mafs>
       <br />
-      <p>
-        The <strong className={stylesPosts.blue}>focal points</strong> of an
-        ellipse centered at <Latex>$(0,0)$</Latex> are{' '}
-        <Latex>$(\pm c,0)$</Latex> if <Latex>{'$a>b$'}</Latex> (horizontal
-        ellipse) and <Latex>$(0,\pm c)$</Latex> if <Latex>{'$a>b$'}</Latex>{' '}
-        (vertical ellipse), where{' '}
-        <Latex>{'$c$ is  calculated as $c = \\sqrt{|a^2-b^2|}.$'}</Latex>
-      </p>
-      <p>
-        Let's see how the{' '}
-        <strong className={stylesPosts.blue}>focal points</strong> affect the
-        shape of the ellipse for a fixed{' '}
-        <strong className={stylesPosts.pink}>
-          {seeVert ? 'horizontal' : 'vertical'} diameter
-        </strong>
-        . What shape do we get when <Latex>$c=0$</Latex>?
-      </p>
+      {lang === 'en' ? (
+        <p>
+          The <strong className={stylesPosts.blue}>focal points</strong> of an
+          ellipse centered at <Latex>$(0,0)$</Latex> are{' '}
+          <Latex>$(\pm c,0)$</Latex> if <Latex>{'$a>b$'}</Latex> (horizontal
+          ellipse) and <Latex>$(0,\pm c)$</Latex> if <Latex>{'$a>b$'}</Latex>{' '}
+          (vertical ellipse), where{' '}
+          <Latex>{'$c$ is  calculated as $c = \\sqrt{|a^2-b^2|}.$'}</Latex>
+        </p>
+      ) : (
+        <p>
+          Los <strong className={stylesPosts.blue}>puntos focales</strong> de
+          una elipse centrada en <Latex>$(0,0)$</Latex> son{' '}
+          <Latex>$(\pm c,0)$</Latex> si <Latex>{'$a>b$'}</Latex> (elipse
+          horizontal) y <Latex>$(0,\pm c)$</Latex> si <Latex>{'$a>b$'}</Latex>{' '}
+          (elipse vertical), donde{' '}
+          <Latex>{'$c$ es calculado como $c = \\sqrt{|a^2-b^2|}.$'}</Latex>
+        </p>
+      )}
+      {lang === 'en' ? (
+        <p>
+          Let's see how the{' '}
+          <strong className={stylesPosts.blue}>focal points</strong> affect the
+          shape of the ellipse for a fixed{' '}
+          <strong className={stylesPosts.pink}>
+            {seeVert ? 'horizontal' : 'vertical'} diameter
+          </strong>
+          . What shape do we get when <Latex>$c=0$</Latex>?
+        </p>
+      ) : (
+        <p>
+          Veamos como los{' '}
+          <strong className={stylesPosts.blue}>puntos focales</strong> afectan a
+          la forma de la elipse dejando el diámetro{' '}
+          <strong className={stylesPosts.pink}>
+            {seeVert ? 'horizontal' : 'vertical'} fijo
+          </strong>
+          . ¿Qué forma se obtiene cuando <Latex>$c=0$</Latex>?
+        </p>
+      )}
       <br />
       <br />
       <div
@@ -249,58 +325,129 @@ export default function Page() {
           </>
         )}
       </Mafs>
-      <h3>And what happens if we change the center?</h3>
-      <p>
-        If we move the ellipse horizontally or vertically, we need to aplly the
-        corresponding transformations to the variables{' '}
-        <Latex>$x$ and $y$.</Latex>
-      </p>
+      {lang === 'en' ? (
+        <h3>And what happens if we change the center?</h3>
+      ) : (
+        <h3>¿Y qué pasa si cambiamos el centro?</h3>
+      )}
+      {lang === 'en' ? (
+        <p>
+          If we move the ellipse horizontally or vertically, we need to aplly
+          the corresponding transformations to the variables{' '}
+          <Latex>$x$ and $y$.</Latex>
+        </p>
+      ) : (
+        <p>
+          Si movemos a la elipse horizontal o verticalmente, necesitamos aplicar
+          las correspondientes transformaciones a las variables{' '}
+          <Latex>$x$ e $y$.</Latex>
+        </p>
+      )}
       <ul>
         <li>
-          <p>
-            Horizontal shift of{' '}
-            <Latex>$h$ units: Change the value of $x$ for $x-h$</Latex>.
-          </p>
+          {lang === 'en' ? (
+            <p>
+              Horizontal shift of{' '}
+              <Latex>$h$ units: Change the value of $x$ for $x-h$</Latex>.
+            </p>
+          ) : (
+            <p>
+              Desplazamiento horizontal de{' '}
+              <Latex>$h$ unidades: Cambiar el valor de $x$ por $x-h$</Latex>.
+            </p>
+          )}
         </li>
         <li>
-          <p>
-            Vertical shift of{' '}
-            <Latex>$k$ units: Change the value of $y$ for $y-k$</Latex>.
-          </p>
+          {lang === 'en' ? (
+            <p>
+              Vertical shift of{' '}
+              <Latex>$k$ units: Change the value of $y$ for $y-k$</Latex>.
+            </p>
+          ) : (
+            <p>
+              Desplazamiento vertical de{' '}
+              <Latex>$k$ unidades: Cambiar el valor de $y$ por $y-k$</Latex>.
+            </p>
+          )}
         </li>
       </ul>
-      Together with the variables <Latex>$x$ and $y$</Latex>, the other elements
-      affected by the translation are the{' '}
-      <strong className={stylesPosts.blue}>focus points</strong>, these are now{' '}
-      <strong className={stylesPosts.blue}>
-        <Latex>$(\pm c + h, k)$</Latex>
-      </strong>{' '}
-      for horizontal ellipses and{' '}
-      <strong className={stylesPosts.blue}>
-        <Latex>$(h, \pm c +k)$</Latex>
-      </strong>{' '}
-      for vertical ellipses.
+      {lang === 'en' ? (
+        <p>
+          Together with the variables <Latex>$x$ and $y$</Latex>, the other
+          elements affected by the translation are the{' '}
+          <strong className={stylesPosts.blue}>focus points</strong>, these are
+          now{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(\pm c + h, k)$</Latex>
+          </strong>{' '}
+          for horizontal ellipses and{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(h, \pm c +k)$</Latex>
+          </strong>{' '}
+          for vertical ellipses.
+        </p>
+      ) : (
+        <p>
+          Junto con las variables <Latex>$x$ e $y$</Latex>, los otros elementos
+          afectados por la traslación son los{' '}
+          <strong className={stylesPosts.blue}>puntos focales</strong>, éstos
+          ahora son{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(\pm c + h, k)$</Latex>
+          </strong>{' '}
+          para elipses horizontales y{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(h, \pm c +k)$</Latex>
+          </strong>{' '}
+          para elipses verticales.
+        </p>
+      )}
       <br />
-      <p>
-        Perfect! Now let's perform this transformations on the formula of the
-        ellipse.
-      </p>
+      {lang === 'en' ? (
+        <p>
+          Perfect! Now let's perform this transformations on the formula of the
+          ellipse.
+        </p>
+      ) : (
+        <p>
+          Perfecto! Ahora realizemos estas transformaciones en la fórmula de la
+          elipse.
+        </p>
+      )}
       <br />
-      <p>
-        The formula of an ellipse centered in{' '}
-        <strong className={stylesPosts.orange}>
-          <Latex>$(h,k)$</Latex>
-        </strong>{' '}
-        is:
-      </p>
+      {lang === 'en' ? (
+        <p>
+          The formula of an ellipse centered in{' '}
+          <strong className={stylesPosts.orange}>
+            <Latex>$(h,k)$</Latex>
+          </strong>{' '}
+          is:
+        </p>
+      ) : (
+        <p>
+          La fórmula de una elipse centrada en{' '}
+          <strong className={stylesPosts.orange}>
+            <Latex>$(h,k)$</Latex>
+          </strong>{' '}
+          es:
+        </p>
+      )}
       <Latex>{'$$\\frac{(x-h)^2}{a^2} + \\frac{(y-k)^2}{b^2} = 1,$$'}</Latex>
-      <p>let's see what this looks like. The fomula:</p>
+      {lang === 'en' ? (
+        <p>let's see what this looks like. The fomula:</p>
+      ) : (
+        <p>veamos cómo se vé. La fórmula:</p>
+      )}
       <Latex>{`$$\\frac{\\big(x-(${roundTwoDecimals(
         translate.x
       )})\\big)^2}{a^2} + \\frac{\\big(y-(${roundTwoDecimals(
         translate.y
       )})\\big)^2}{b^2} = 1,$$`}</Latex>
-      <p>gives us the following ellipse:</p>
+      {lang === 'en' ? (
+        <p>gives us the following ellipse:</p>
+      ) : (
+        <p>nos da la siguiente elipse:</p>
+      )}
       <br />
       <Mafs viewBox={{x: [-3, 3], y: [-3, 3]}}>
         <Coordinates.Cartesian />
@@ -318,29 +465,56 @@ export default function Page() {
         {translate.element}
       </Mafs>
       <br />
-      <p>
-        To sum up, we've learnt how to plot a general ellipse centered at{' '}
-        <strong className={stylesPosts.orange}>
-          <Latex>$(h,k)$</Latex>
-        </strong>
-        , with horizontal and vertical diameters{' '}
-        <strong className={stylesPosts.pink}>
-          <Latex>$a$</Latex>
-        </strong>{' '}
-        and{' '}
-        <strong className={stylesPosts.pink}>
-          <Latex>$b$</Latex>
-        </strong>{' '}
-        and focus points{' '}
-        <strong className={stylesPosts.blue}>
-          <Latex>$(h+c, k)$</Latex>
-        </strong>{' '}
-        and{' '}
-        <strong className={stylesPosts.blue}>
-          <Latex>$(h, k+c)$</Latex>
-        </strong>
-        .
-      </p>
+      {lang === 'en' ? (
+        <p>
+          To sum up, we've learnt how to plot a general ellipse centered at{' '}
+          <strong className={stylesPosts.orange}>
+            <Latex>$(h,k)$</Latex>
+          </strong>
+          , with horizontal and vertical diameters{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$a$</Latex>
+          </strong>{' '}
+          and{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$b$</Latex>
+          </strong>{' '}
+          and focus points{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(h+c, k)$</Latex>
+          </strong>{' '}
+          and{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(h, k+c)$</Latex>
+          </strong>
+          .
+        </p>
+      ) : (
+        <p>
+          En resumen, hemos aprendido como graficar una elipse general centrada
+          en{' '}
+          <strong className={stylesPosts.orange}>
+            <Latex>$(h,k)$</Latex>
+          </strong>
+          , con diámetros horizontal y vertical{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$a$</Latex>
+          </strong>{' '}
+          y{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$b$</Latex>
+          </strong>{' '}
+          y puntos focales{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(h+c, k)$</Latex>
+          </strong>{' '}
+          y{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$(h, k+c)$</Latex>
+          </strong>
+          .
+        </p>
+      )}
       <Latex>{`$$\\frac{\\big(x-(${roundTwoDecimals(
         translate2.x
       )})\\big)^2}{(${Math.abs(
