@@ -2,6 +2,7 @@
 import styles from '../styles/Home.module.css';
 import Card from '../components/Card';
 import ButtonHome from '../components/ButtonHome';
+import Link from 'next/link';
 
 export default function Page() {
   return (
@@ -13,7 +14,10 @@ export default function Page() {
       <br />
       <br />
       <br />
-      <div className='link-card-grid'>
+      <h2>
+        Nothing to see here yet, go to <Link href='/Conics/'>Conics</Link>.
+      </h2>
+      {/* <div className='link-card-grid'>
         <Card
           title='Functions'
           url='/Limits/Functions'
@@ -25,7 +29,7 @@ export default function Page() {
           url='/Limits/Sequences'
           description='Definition, Examples...'
         />
-      </div>
+      </div> */}
     </div>
   );
 }
