@@ -38,12 +38,12 @@ export default function limitFunctions() {
   //Second animation
   const ep1 = useMovablePoint([0, 2.5], {
     constrain: ([x, y]) => [0, clamp(y, 2, 3)],
-    color: Theme.green,
+    color: Theme.pink,
   });
   // Third animation
   const ep2 = useMovablePoint([0, 4.5], {
     constrain: ([x, y]) => [0, clamp(y, 4, 7)],
-    color: Theme.green,
+    color: Theme.pink,
   });
 
   return (
@@ -196,7 +196,7 @@ export default function limitFunctions() {
             <Latex>$3$</Latex>
           </strong>
           . By moving the value of{' '}
-          <strong className={stylesPosts.green}>
+          <strong className={stylesPosts.pink}>
             <Latex>$\varepsilon$</Latex>
           </strong>
           <Latex>{`$>0$`}</Latex>,{' '}
@@ -214,7 +214,7 @@ export default function limitFunctions() {
             <Latex>$3$</Latex>
           </strong>
           . Al mover el valor de{' '}
-          <strong className={stylesPosts.green}>
+          <strong className={stylesPosts.pink}>
             <Latex>$\varepsilon$</Latex>
           </strong>
           <Latex>{`$>0$`}</Latex>,{' '}
@@ -231,17 +231,17 @@ export default function limitFunctions() {
         <Plot.OfX y={(x) => x - 1} />
         {/* Epsilon */}
         {ep1.element}
-        <Point x={0} y={2 - Math.abs(2 - ep1.y)} color={Theme.green} />
+        <Point x={0} y={2 - Math.abs(2 - ep1.y)} color={Theme.pink} />
         <MafsLatex
           at={[-0.6, ep1.y + 0.3]}
-          color={Theme.green}
+          color={Theme.pink}
           tex={String.raw`
             L+\varepsilon
           `}
         />
         <MafsLatex
           at={[-0.6, 2 - Math.abs(2 - ep1.y) - 0.3]}
-          color={Theme.green}
+          color={Theme.pink}
           tex={String.raw`
             L-\varepsilon
           `}
@@ -251,12 +251,12 @@ export default function limitFunctions() {
             '<': (x) => ep1.y,
             '>': (x) => 2 - Math.abs(2 - ep1.y),
           }}
-          color={Theme.green}
+          color={Theme.pink}
         />
-        <Vector tail={[7, 0.8]} tip={[6.5, 2]} color={Theme.green} />
+        <Vector tail={[7, 0.8]} tip={[6.5, 2]} color={Theme.pink} />
         <MafsLatex
           at={[7.2, 0.6]}
-          color={Theme.green}
+          color={Theme.pink}
           tex={String.raw`
             |f(x)-L|<\varepsilon
           `}
@@ -404,78 +404,244 @@ export default function limitFunctions() {
       <br />
       {lang === 'en' ? (
         <p>
-          Let <Latex>{`$\\varepsilon>0$`}</Latex> (this is the way of defining
-          an arbitrary <Latex>$\varepsilon$</Latex>). We want to find{' '}
-          <Latex>{`$\\delta>0$`}</Latex> such that if{' '}
-          <Latex>{`$0<|x-1|<\\delta$`}</Latex>, then{' '}
-          <Latex>{`$|f(x)-L|<\\varepsilon$`}</Latex>. We will start by trying to
-          make <Latex>{`$|x-1|$`}</Latex> appear from the equation{' '}
-          <Latex>{`$|f(x)-L|<\\varepsilon$`}</Latex>, so that then we can choose{' '}
-          <Latex>{`$\\delta$`}</Latex> so that everything works. This won't be
-          the proof, this is just the informal calculations, once we finish with
-          them, we'll write the formal proof.
+          Let{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          <Latex>{`$>0$`}</Latex> (this is the way of defining an arbitrary{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          ). We want to find{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$>0$`}</Latex> such that if <Latex>{`$0<|x-$`}</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$1$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          , then <Latex>{`$|f(x)-$`}</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$L$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          . We will start by trying to make <Latex>{`$0<|x-$`}</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$1$`}</Latex>
+          </strong>
+          <Latex>{`$|$`}</Latex> appear from the equation{' '}
+          <Latex>{`$|f(x)-$`}</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$L$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          , so that then we can choose{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>{' '}
+          so that everything works. This won't be the proof, this is just the
+          informal calculations, once we finish with them, we'll write the
+          formal proof.
         </p>
       ) : (
         <p>
-          Sea <Latex>{`$\\varepsilon>0$`}</Latex> (esta es la forma de definir
-          un <Latex>$\varepsilon$</Latex> arbitrario). Queremos encontrar{' '}
-          <Latex>{`$\\delta>0$`}</Latex> tal que si{' '}
-          <Latex>{`$0<|x-1|<\\delta$`}</Latex>, entonces{' '}
-          <Latex>{`$|f(x)-L|<\\varepsilon$`}</Latex>. Vamos a empezar intentando
-          hacer <Latex>{`$|x-1|$`}</Latex> aparecer en la ecuación{' '}
-          <Latex>{`$|f(x)-L|<\\varepsilon$`}</Latex>, de ese modo podremos
-          elegir <Latex>{`$\\delta$`}</Latex> suficientemente pequeño para que
-          todo funcione. Esto no será la demostración, eso son solo las cuentas
-          informales, una vez que terminemos con ellas, escribiremos la
-          demostrción formal.
+          Sea{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          <Latex>{`$>0$`}</Latex> (esta es la forma de definir un{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>{' '}
+          arbitrario). Queremos encontrar{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$>0$`}</Latex> tal que si <Latex>{`$0<|x-$`}</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$1$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          , entonces <Latex>{`$|f(x)-$`}</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$L$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          . Vamos a empezar intentando hacer <Latex>{`$0<|x-$`}</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$1$`}</Latex>
+          </strong>
+          <Latex>{`$|$`}</Latex> aparecer en la ecuación{' '}
+          <Latex>{`$|f(x)-$`}</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$L$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          , de ese modo podremos elegir{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>{' '}
+          suficientemente pequeño para que todo funcione. Esto no será la
+          demostración, eso son solo las cuentas informales, una vez que
+          terminemos con ellas, escribiremos la demostrción formal.
         </p>
       )}
       <br />
       {lang === 'en' ? (
         <p>
-          Replacing the values of <Latex>$f$</Latex> and <Latex>$L$</Latex>{' '}
+          Replacing the values of <Latex>$f$</Latex> and{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$L$</Latex>
+          </strong>{' '}
           gives
           <Latex>
             $$|f(x) - L| = |x^2 + 3 - 4| = |x^2 - 1| = |x-1||x+1|.$$
           </Latex>
-          We have <Latex>$|x-1|$</Latex>, which is exactly what we wanted. But
-          we cannot yet replace it to make it smaller than{' '}
-          <Latex>$\delta$</Latex>, because there is still dependence on{' '}
-          <Latex>$x$</Latex> in the term <Latex>$|x+1|$</Latex>. So we first
-          need to get rid of it by bounding it from above. The idea is to take{' '}
-          <Latex>$\delta$</Latex> small, we can take it smaller than{' '}
-          <Latex>$1.$</Latex> Then if <Latex>{`$|x-1|<\\delta <1$`}</Latex>, we
-          have <Latex>{`$-1<x-1<1$`}</Latex>, so <Latex>{`$1<x+1<3$`}</Latex>.
-          Great! Let's use this in the previous equation.
+          We have <Latex>$|x-$</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$1$`}</Latex>
+          </strong>
+          <Latex>$|$</Latex>, which is exactly what we wanted. But we cannot yet
+          replace it to make it smaller than{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$\delta$</Latex>
+          </strong>
+          , because there is still dependence on <Latex>$x$</Latex> in the term{' '}
+          <Latex>$|x+1|$</Latex>. So we first need to get rid of it by bounding
+          it from above. The idea is to take{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$\delta$</Latex>
+          </strong>{' '}
+          small, we can take it smaller than <Latex>$1.$</Latex> Then if{' '}
+          <Latex>$|x-$</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$1$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$<1$`}</Latex>, we have <Latex>{`$-1<x-1<1$`}</Latex>, so{' '}
+          <Latex>{`$1<x+1<3$`}</Latex>. Great! Let's use this in the previous
+          equation.
           <Latex>{`$$|f(x) - L| = |x-1||x+1| < 3|x-1| < 3\\delta.$$`}</Latex>
-          We want to have <Latex>{`$|f(x) - L|<\\varepsilon.$`}</Latex> Then it
-          suffices to take <Latex>{`$3\\delta < \\varepsilon$`}</Latex>, that is{' '}
-          <Latex>{`$\\delta < \\frac\{\\varepsilon\}\{3\}.$`}</Latex> Recall
-          that we also needed <Latex>{`$\\delta < 1,$`}</Latex> so we'll have to
-          take the smaller of these two values.
+          We want to have <Latex>{`$|f(x)-$`}</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$L$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>{' '}
+          Then it suffices to take <Latex>{`$3`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$<$`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          , that is{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$<$`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          <Latex>{`$/3.$`}</Latex> Recall that we also needed{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$< 1,$`}</Latex> so we'll have to take the smaller of these
+          two values.
         </p>
       ) : (
         <p>
-          Reemplazando los valores de <Latex>$f$</Latex> y <Latex>$L$</Latex>
+          Reemplazando los valores de <Latex>$f$</Latex> y{' '}
+          <strong className={stylesPosts.blue}>
+            <Latex>$L$</Latex>
+          </strong>
           <Latex>
             $$|f(x) - L| = |x^2 + 3 - 4| = |x^2 - 1| = |x-1||x+1|.$$
           </Latex>
-          Tenemos <Latex>$|x-1|$</Latex>, que es exactamente lo que queríamos.
-          Pero no podemos aún reemplazarlo para hacerlo menor que{' '}
-          <Latex>$\delta$</Latex>, porque aún hay dependencia en{' '}
-          <Latex>$x$</Latex> en el término <Latex>$|x+1|$</Latex>. Entonces
-          primero debemos deshacernos de ese término, acotándolo por arriba. La
-          idea es tomar <Latex>$\delta$</Latex> pequeño, podemos hacerlo menor
-          que <Latex>$1.$</Latex> Entonces si{' '}
-          <Latex>{`$|x-1|<\\delta <1$`}</Latex>, tenemos{' '}
-          <Latex>{`$-1<x-1<1$`}</Latex>, y <Latex>{`$1<x+1<3$`}</Latex>.
-          Buenísimo! Usemos esto en la ecuación previa.
+          Tenemos <Latex>$|x-$</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$1$`}</Latex>
+          </strong>
+          <Latex>$|$</Latex>, que es exactamente lo que queríamos. Pero no
+          podemos aún reemplazarlo para hacerlo menor que{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$\delta$</Latex>
+          </strong>{' '}
+          , porque aún hay dependencia en <Latex>$x$</Latex> en el término{' '}
+          <Latex>$|x+1|$</Latex>. Entonces primero debemos deshacernos de ese
+          término, acotándolo por arriba. La idea es tomar{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$\delta$</Latex>
+          </strong>{' '}
+          pequeño, podemos hacerlo menor que <Latex>$1.$</Latex> Entonces si{' '}
+          <Latex>$|x-$</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$1$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$<1$`}</Latex>, tenemos <Latex>{`$-1<x-1<1$`}</Latex>, y{' '}
+          <Latex>{`$1<x+1<3$`}</Latex>. Buenísimo! Usemos esto en la ecuación
+          previa.
           <Latex>{`$$|f(x) - L| = |x-1||x+1| < 3|x-1| < 3\\delta.$$`}</Latex>
-          Queremos tener <Latex>{`$|f(x) - L|<\\varepsilon.$`}</Latex> Es
-          suficiente tomar <Latex>{`$3\\delta < \\varepsilon$`}</Latex>, esto es{' '}
-          <Latex>{`$\\delta < \\frac\{\\varepsilon\}\{3\}.$`}</Latex> Recordá
-          que también necesitabamos <Latex>{`$\\delta < 1,$`}</Latex> así que
-          debemos tomar el menor de esos dos valores.
+          Queremos tener <Latex>{`$|f(x)-$`}</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$L$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>{' '}
+          Es suficiente tomar <Latex>{`$3`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$<$`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          , esto es{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$<$`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          <Latex>{`$/3.$`}</Latex> Recordá que también necesitabamos{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$< 1,$`}</Latex> así que debemos tomar el menor de esos dos
+          valores.
         </p>
       )}
       <br />
@@ -497,17 +663,51 @@ export default function limitFunctions() {
       )}
       {lang === 'en' ? (
         <p>
-          Let <Latex>{`$\\varepsilon>0$`}</Latex>, choose{' '}
-          <Latex>{`$\\delta < \\min\\{ 1, \\varepsilon/3 \\}.$`}</Latex> Then if{' '}
-          <Latex>{`$|x-1|<\\delta,$`}</Latex>
+          Let{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          , choose{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$ < \\min\\{ 1, $`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$~ \\varepsilon$`}</Latex>
+          </strong>
+          <Latex>{`$/3 \\}.$`}</Latex> Then if <Latex>$|x-$</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$1$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
           <Latex>{`$$|f(x) - L| = |x-1||x+1| < 3|x-1| < 3\\delta < \\varepsilon.$$`}</Latex>
           As we wanted to prove.
         </p>
       ) : (
         <p>
-          Sea <Latex>{`$\\varepsilon>0$`}</Latex>, tomemos{' '}
-          <Latex>{`$\\delta < \\min\\{ 1, \\varepsilon/3 \\}.$`}</Latex> Luego
-          si <Latex>{`$|x-1|<\\delta,$`}</Latex>
+          Sea{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$\\varepsilon$`}</Latex>
+          </strong>
+          , tomemos{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
+          <Latex>{`$ < \\min\\{ 1, $`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>{`$~\\varepsilon$`}</Latex>
+          </strong>
+          <Latex>{`$/3 \\}.$`}</Latex> Luego si <Latex>$|x-$</Latex>
+          <strong className={stylesPosts.blue}>
+            <Latex>{`$1$`}</Latex>
+          </strong>
+          <Latex>{`$|<$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>{`$\\delta$`}</Latex>
+          </strong>
           <Latex>{`$$|f(x) - L| = |x-1||x+1| < 3|x-1| < 3\\delta < \\varepsilon.$$`}</Latex>
           Como queríamos demostrar
         </p>
@@ -518,17 +718,17 @@ export default function limitFunctions() {
         <Plot.OfX y={(x) => x * x + 3} />
         {/* Epsilon */}
         {ep2.element}
-        <Point x={0} y={4 - Math.abs(4 - ep2.y)} color={Theme.green} />
+        <Point x={0} y={4 - Math.abs(4 - ep2.y)} color={Theme.pink} />
         <MafsLatex
           at={[-0.6, ep2.y + 0.3]}
-          color={Theme.green}
+          color={Theme.pink}
           tex={String.raw`
             L+\varepsilon
           `}
         />
         <MafsLatex
           at={[-0.6, 4 - Math.abs(4 - ep2.y) - 0.3]}
-          color={Theme.green}
+          color={Theme.pink}
           tex={String.raw`
             L-\varepsilon
           `}
@@ -538,7 +738,7 @@ export default function limitFunctions() {
             '<': (x) => ep2.y,
             '>': (x) => 4 - Math.abs(4 - ep2.y),
           }}
-          color={Theme.green}
+          color={Theme.pink}
         />
         {/* Delta */}
         <Point x={1 - Math.abs(4 - ep2.y) / 3} y={0} color={Theme.yellow} />
