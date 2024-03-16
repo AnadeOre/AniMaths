@@ -552,7 +552,7 @@ export default function limitFunctions() {
           <strong className={stylesPosts.pink}>
             <Latex>{`$\\varepsilon$`}</Latex>
           </strong>{' '}
-          Then it suffices to take <Latex>{`$3`}</Latex>
+          Then it suffices to take <Latex>{`$3$`}</Latex>
           <strong className={stylesPosts.yellow}>
             <Latex>{`$\\delta$`}</Latex>
           </strong>
@@ -620,7 +620,7 @@ export default function limitFunctions() {
           <strong className={stylesPosts.pink}>
             <Latex>{`$\\varepsilon$`}</Latex>
           </strong>{' '}
-          Es suficiente tomar <Latex>{`$3`}</Latex>
+          Es suficiente tomar <Latex>{`$3$`}</Latex>
           <strong className={stylesPosts.yellow}>
             <Latex>{`$\\delta$`}</Latex>
           </strong>
