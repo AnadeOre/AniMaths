@@ -41,8 +41,8 @@ export default function limitFunctions() {
     color: Theme.green,
   });
   // Third animation
-  const ep2 = useMovablePoint([0, 2.5], {
-    constrain: ([x, y]) => [0, clamp(y, 2, 3)],
+  const ep2 = useMovablePoint([0, 4.5], {
+    constrain: ([x, y]) => [0, clamp(y, 4, 7)],
     color: Theme.green,
   });
 
@@ -233,14 +233,14 @@ export default function limitFunctions() {
         {ep1.element}
         <Point x={0} y={2 - Math.abs(2 - ep1.y)} color={Theme.green} />
         <MafsLatex
-          at={[-0.6, ep1.y]}
+          at={[-0.6, ep1.y + 0.3]}
           color={Theme.green}
           tex={String.raw`
             L+\varepsilon
           `}
         />
         <MafsLatex
-          at={[-0.6, 2 - Math.abs(2 - ep1.y)]}
+          at={[-0.6, 2 - Math.abs(2 - ep1.y) - 0.3]}
           color={Theme.green}
           tex={String.raw`
             L-\varepsilon
@@ -490,6 +490,106 @@ export default function limitFunctions() {
           corta una vez que sabemos que <Latex>$\delta$</Latex> tomar.
         </p>
       )}
+      {lang === 'en' ? (
+        <h3>Writing the proof</h3>
+      ) : (
+        <h3>Escribiendo la demostración</h3>
+      )}
+      {lang === 'en' ? (
+        <p>
+          Let <Latex>{`$\\varepsilon>0$`}</Latex>, choose{' '}
+          <Latex>{`$\\delta < \\min\\{ 1, \\varepsilon/3 \\}.$`}</Latex> Then if{' '}
+          <Latex>{`$|x-1|<\\delta,$`}</Latex>
+          <Latex>{`$$|f(x) - L| = |x-1||x+1| < 3|x-1| < 3\\delta < \\varepsilon.$$`}</Latex>
+          As we wanted to prove.
+        </p>
+      ) : (
+        <p>
+          Sea <Latex>{`$\\varepsilon>0$`}</Latex>, tomemos{' '}
+          <Latex>{`$\\delta < \\min\\{ 1, \\varepsilon/3 \\}.$`}</Latex> Luego
+          si <Latex>{`$|x-1|<\\delta,$`}</Latex>
+          <Latex>{`$$|f(x) - L| = |x-1||x+1| < 3|x-1| < 3\\delta < \\varepsilon.$$`}</Latex>
+          Como queríamos demostrar
+        </p>
+      )}
+
+      <Mafs viewBox={{x: [0, 2], y: [-1, 5]}}>
+        <Coordinates.Cartesian />
+        <Plot.OfX y={(x) => x * x + 3} />
+        {/* Epsilon */}
+        {ep2.element}
+        <Point x={0} y={4 - Math.abs(4 - ep2.y)} color={Theme.green} />
+        <MafsLatex
+          at={[-0.6, ep2.y + 0.3]}
+          color={Theme.green}
+          tex={String.raw`
+            L+\varepsilon
+          `}
+        />
+        <MafsLatex
+          at={[-0.6, 4 - Math.abs(4 - ep2.y) - 0.3]}
+          color={Theme.green}
+          tex={String.raw`
+            L-\varepsilon
+          `}
+        />
+        <Plot.Inequality
+          y={{
+            '<': (x) => ep2.y,
+            '>': (x) => 4 - Math.abs(4 - ep2.y),
+          }}
+          color={Theme.green}
+        />
+        {/* Delta */}
+        <Point x={1 - Math.abs(4 - ep2.y) / 3} y={0} color={Theme.yellow} />
+        <Point x={1 + Math.abs(4 - ep2.y) / 3} y={0} color={Theme.yellow} />
+        <Plot.Inequality
+          x={{
+            '>': (y) => 1 - Math.abs(4 - ep2.y) / 3,
+            '<': (y) => 1 + Math.abs(4 - ep2.y) / 3,
+          }}
+          color={Theme.yellow}
+        />
+        <MafsLatex
+          at={[1 - Math.abs(4 - ep2.y) / 3 - 0.75, 0.4]}
+          color={Theme.yellow}
+          tex={String.raw`
+            x_0-\frac{\varepsilon}{3}
+          `}
+        />
+        <MafsLatex
+          at={[1 + Math.abs(4 - ep2.y) / 3 + 0.75, 0.4]}
+          color={Theme.yellow}
+          tex={String.raw`
+            x_0+\frac{\varepsilon}{3}
+          `}
+        />
+
+        {/* L and x0 */}
+        <Point x={1} y={0} color={Theme.blue} />
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, 4]}
+          color={Theme.blue}
+          style='dashed'
+          weight={5}
+        />
+        <Line.Segment
+          point1={[0, 4]}
+          point2={[1, 4]}
+          color={Theme.blue}
+          style='dashed'
+          weight={5}
+        />
+        <Text></Text>
+        <MafsLatex
+          at={[-0.3, 4]}
+          color={Theme.blue}
+          tex={String.raw`
+            L
+          `}
+        />
+      </Mafs>
     </PostLayout>
   );
 }
