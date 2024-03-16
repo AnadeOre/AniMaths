@@ -10,11 +10,16 @@
 .pink {
   color: rgb(225, 37, 184);
 }
+.pinkLight {
+  color: rgb(229, 103, 202);
+}
 .blue {
   color: rgb(81, 153, 221);
 }
 .green {
   color: rgb(119, 196, 119);
+  text-shadow: 1px 1px 1px black, 0 0 1em rgb(100, 100, 100),
+    0 0 0.1em rgb(100, 100, 100);
 }
 .orange {
   color: rgb(241, 125, 9);
@@ -24,7 +29,8 @@
 }
 .yellow {
   color: rgb(221, 221, 48);
-  text-shadow: 1px 1px 1px black;
+  text-shadow: 1px 1px 1px black, 0 0 1em rgb(100, 100, 100),
+    0 0 0.1em rgb(100, 100, 100);
 }
 
 .linkCard {

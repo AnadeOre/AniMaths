@@ -46,6 +46,28 @@ export default function limitFunctions() {
     color: Theme.pink,
   });
 
+  // Fourth animation
+  const c1 = useMovablePoint([4, 3], {
+    constrain: ([x, y]) => [4, clamp(y, 2.1, 4)],
+    color: Theme.green,
+  });
+
+  //Fifth animation
+  const translateG = useMovablePoint([0, 4], {
+    constrain: ([x, y]) => [0, clamp(y, 0, 6)],
+    color: Theme.yellow,
+  });
+  //Sixth animation
+  const translateF = useMovablePoint([0, 5], {
+    constrain: ([x, y]) => [0, clamp(y, 0, 7)],
+    color: Theme.pink,
+  });
+  //Seventh animation
+  const translateF2 = useMovablePoint([0, 3.5], {
+    constrain: ([x, y]) => [0, clamp(y, 0, 7)],
+    color: Theme.pink,
+  });
+
   return (
     <PostLayout
       whereTo='/Limits'
@@ -54,8 +76,9 @@ export default function limitFunctions() {
       }>
       {lang === 'en' ? (
         <p>
-          The limit of a function is the value that the fuction approaches as
-          the input approaches some value. Let's consider a function{' '}
+          The <strong className={stylesPosts.textCard}>limit</strong> of a
+          function is the value that the fuction approaches as the input
+          approaches some value. Let's consider a function{' '}
           <Latex>$f : \R\to\R$</Latex> and let <Latex>$x_0\in\R$</Latex>, the
           function will have a specific value at <Latex>$x_0$</Latex>,{' '}
           <Latex>$f(x_0)$</Latex>, but we will be interested in the values that{' '}
@@ -63,8 +86,9 @@ export default function limitFunctions() {
           <i>
             close to <Latex>$x_0$</Latex>
           </i>
-          . In the next animation, which do you think the limit of the function{' '}
-          <Latex>$f$</Latex> is as{' '}
+          . In the next animation, which do you think the{' '}
+          <strong className={stylesPosts.textCard}>limit</strong> of the
+          function <Latex>$f$</Latex> is as{' '}
           <strong className={stylesPosts.pink}>
             <Latex>$x$</Latex>
           </strong>{' '}
@@ -76,8 +100,9 @@ export default function limitFunctions() {
         </p>
       ) : (
         <p>
-          El límite de una función es el valor al que la función se acerca,
-          cuando la entrada se acerca a un valor. Consideremos una función{' '}
+          El <strong className={stylesPosts.textCard}>límite</strong> de una
+          función es el valor al que la función se acerca, cuando la entrada se
+          acerca a un valor. Consideremos una función{' '}
           <Latex>$f : \R\to\R$</Latex> y sea <Latex>$x_0\in\R$</Latex>, la
           función va a tomar un valor específico en <Latex>$x_0$</Latex>,{' '}
           <Latex>$f(x_0)$</Latex>, pero vamos a interesarnos por los valores que{' '}
@@ -85,7 +110,8 @@ export default function limitFunctions() {
           <i>
             cerca de <Latex>$x_0$</Latex>
           </i>
-          . En la siguiente animación ¿Cuál creés que es el límite de la función{' '}
+          . En la siguiente animación ¿Cuál creés que es el{' '}
+          <strong className={stylesPosts.textCard}>límite</strong> de la función{' '}
           <Latex>$f$</Latex> cuando{' '}
           <strong className={stylesPosts.pink}>
             <Latex>$x$</Latex>
@@ -147,13 +173,15 @@ export default function limitFunctions() {
       <br />
       {lang === 'en' ? (
         <p>
-          That definition of Limit was a bit vague. Let's see the real
-          mathematical definition.
+          That definition of{' '}
+          <strong className={stylesPosts.textCard}>limit</strong> was a bit
+          vague. Let's see the real mathematical definition.
         </p>
       ) : (
         <p>
-          Esa definición de Límite fue un poco imprecisa. Veamos la definición
-          matemática real.
+          Esa definición de{' '}
+          <strong className={stylesPosts.textCard}>límite</strong> fue un poco
+          imprecisa. Veamos la definición matemática real.
         </p>
       )}
       {lang === 'en' ? <h3>Definition</h3> : <h3>Definición</h3>}
@@ -162,10 +190,11 @@ export default function limitFunctions() {
           Let <Latex>$f$</Latex> be a function defined in all points inside some
           open interval <Latex>$(a,b)$</Latex> that contains{' '}
           <Latex>$x_0$</Latex>, except perhaps in <Latex>$x_0$</Latex>. We say
-          that the limit of <Latex>$f$</Latex> as <Latex>$x\to x_0$</Latex> (
-          <Latex>$x$</Latex> tends to <Latex>$x_0$</Latex>) is{' '}
-          <Latex>$L$</Latex> if for every <Latex>{`$\\varepsilon>0$`}</Latex>{' '}
-          there exists <Latex>{`$\\delta>0$`}</Latex> (depending on{' '}
+          that the <strong className={stylesPosts.textCard}>limit</strong> of{' '}
+          <Latex>$f$</Latex> as <Latex>$x\to x_0$</Latex> (<Latex>$x$</Latex>{' '}
+          tends to <Latex>$x_0$</Latex>) is <Latex>$L$</Latex> if for every{' '}
+          <Latex>{`$\\varepsilon>0$`}</Latex> there exists{' '}
+          <Latex>{`$\\delta>0$`}</Latex> (depending on{' '}
           <Latex>$\varepsilon$</Latex>) such that if{' '}
           <Latex>{`$0<|x-x_0|<\\delta$`}</Latex>, then{' '}
           <Latex>{`$|f(x)-L|<\\varepsilon$`}</Latex>. When this happens we write
@@ -176,7 +205,8 @@ export default function limitFunctions() {
           Sea <Latex>$f$</Latex> una función definida en todos los puntos de un
           intervalo abierto <Latex>$(a,b)$</Latex> que contiene a{' '}
           <Latex>$x_0$</Latex>, excepto tal vez en <Latex>$x_0$</Latex>. Decimos
-          que el límite de <Latex>$f$</Latex> cuando <Latex>$x\to x_0$</Latex> (
+          que el <strong className={stylesPosts.textCard}>límite</strong> de{' '}
+          <Latex>$f$</Latex> cuando <Latex>$x\to x_0$</Latex> (
           <Latex>$x$</Latex> tiende a <Latex>$x_0$</Latex>) es{' '}
           <Latex>$L$</Latex> si para todo <Latex>{`$\\varepsilon>0$`}</Latex>{' '}
           existe <Latex>{`$\\delta>0$`}</Latex> (que depende de{' '}
@@ -209,7 +239,8 @@ export default function limitFunctions() {
       ) : (
         <p>
           Probá la definición en la siguiente animación! Vamos a calcular el
-          límite de <Latex>$f(x) = x-1$</Latex> cuando <Latex>$x\to$</Latex>
+          <strong className={stylesPosts.textCard}>límite</strong> de{' '}
+          <Latex>$f(x) = x-1$</Latex> cuando <Latex>$x\to$</Latex>
           <strong className={stylesPosts.blue}>
             <Latex>$3$</Latex>
           </strong>
@@ -323,47 +354,61 @@ export default function limitFunctions() {
       {lang === 'en' ? (
         <p>
           So what's all the fuss about? This seems trivial! Well, note that if
-          the function had another definition at <Latex>$x_0$</Latex>, the limit
-          would still be the same!
+          the function had another definition at <Latex>$x_0$</Latex>, the{' '}
+          <strong className={stylesPosts.textCard}>limit</strong> would still be
+          the same!
         </p>
       ) : (
         <p>
           Y por qué tanto alboroto? Esto parece trivial! Bueno, si la función
           hubiera estado definida de otro modo en <Latex>$x_0$</Latex>, el
-          límite seguiría siendo el mismo!
+          <strong className={stylesPosts.textCard}>límite</strong> seguiría
+          siendo el mismo!
         </p>
       )}
       <br />
       {lang === 'en' ? (
         <p>
-          Limits don't "see" the value of the function at the point. It may not
-          even be defined at <Latex>$x_0$</Latex>!
+          <strong className={stylesPosts.textCard}>Limits</strong> don't "see"
+          the value of the function at the point. It may not even be defined at{' '}
+          <Latex>$x_0$</Latex>!
         </p>
       ) : (
         <p>
-          Los límites no ven el valor de la función en el punto. Podría incluso
-          no estar definida en <Latex>$x_0$</Latex>!
+          Los <strong className={stylesPosts.textCard}>límites</strong> no ven
+          el valor de la función en el punto. Podría incluso no estar definida
+          en <Latex>$x_0$</Latex>!
         </p>
       )}
 
       {lang === 'en' ? (
         <h3>Proving a limit by definition</h3>
       ) : (
-        <h3>Demostrando un límite por definición</h3>
+        <h3>
+          Demostrando un{' '}
+          <strong className={stylesPosts.textCard}>límite</strong> por
+          definición
+        </h3>
       )}
       <br />
       {lang === 'en' ? (
         <p>
-          Now it's time we work on a limit by definition. Let's prove that the
-          limit of the following function
+          Now it's time we work on a{' '}
+          <strong className={stylesPosts.textCard}>limit</strong> by definition.
+          Let's prove that the
+          <strong className={stylesPosts.textCard}>limit</strong> of the
+          following function
           <Latex>{`$$f(x) = x^2+3,$$`}</Latex>
           when <Latex>$x\to1$</Latex>, is <Latex>$4$</Latex>. Looking at the
           plot, this seems true, but we have to prove it!
         </p>
       ) : (
         <p>
-          Es hora de que trabajemos en un límite por definición. Demostremos que
-          el límite de la siguiente función
+          Es hora de que trabajemos en un{' '}
+          <strong className={stylesPosts.textCard}>límite</strong> por
+          definición. Demostremos que el{' '}
+          <strong className={stylesPosts.textCard}>límite</strong> de la
+          siguiente función
           <Latex>{`$$f(x) = x^2+3,$$`}</Latex>
           cuando <Latex>$x\to1$</Latex>, es <Latex>$4$</Latex>. Viendo el
           gráfico esto pareciera cierto, pero hay que demostrarlo!
@@ -373,6 +418,25 @@ export default function limitFunctions() {
       <Mafs viewBox={{x: [0, 2], y: [0, 5]}}>
         <Coordinates.Cartesian />
         <Plot.OfX y={(x) => x * x + 3} />
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, 4]}
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, 4]}
+          point2={[1, 4]}
+          color={Theme.blue}
+          weight={3}
+        />
+        <MafsLatex
+          at={[-0.3, 4]}
+          color={Theme.blue}
+          tex={String.raw`
+            L
+          `}
+        />
       </Mafs>
       <br />
       {lang === 'en' ? (
@@ -781,13 +845,654 @@ export default function limitFunctions() {
           style='dashed'
           weight={5}
         />
-        <Text></Text>
         <MafsLatex
           at={[-0.3, 4]}
           color={Theme.blue}
           tex={String.raw`
             L
           `}
+        />
+      </Mafs>
+      <br />
+      {lang === 'en' ? (
+        <h3>Properties of limits</h3>
+      ) : (
+        <h3>Propiedades de límites</h3>
+      )}
+      {lang === 'en' ? (
+        <p>
+          I'm sure that, like me, you probably don't want to calculate{' '}
+          <strong className={stylesPosts.textCard}>limits</strong> by definition
+          (like we just did) for the rest of your life. Luckily{' '}
+          <strong className={stylesPosts.textCard}>limits</strong> satisfy a
+          list of properties that make them easier to handle! Let's learn them.
+          From now on{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>{' '}
+          and{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>{' '}
+          are two functions and{' '}
+          <strong className={stylesPosts.green}>
+            <Latex>$c$</Latex>
+          </strong>{' '}
+          is a constant.
+        </p>
+      ) : (
+        <p>
+          Estoy segura de que, como yo, probablemente no querés calcular{' '}
+          <strong className={stylesPosts.textCard}>límites</strong>
+          por defiinicion (como acabamos de hacer) por el resto de tu vida.
+          Afortunadamente, los{' '}
+          <strong className={stylesPosts.textCard}>límites</strong> satisfacen
+          una lísta de propiedades que los hacen más manejables! Aprendámoslos.
+          De ahora en adelante{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>{' '}
+          y{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>{' '}
+          serán dos funcioens y{' '}
+          <strong className={stylesPosts.green}>
+            <Latex>$c$</Latex>
+          </strong>{' '}
+          es una constante.
+        </p>
+      )}
+      <br />
+      {lang === 'en' ? (
+        <li>
+          Multiplication by constants:{' '}
+          <Latex>{`$\\lim\\limits_{x\\to x_0}\\big[$`}</Latex>
+          <strong className={stylesPosts.green}>
+            <Latex>$c$</Latex>
+          </strong>
+          <Latex>$\cdot$</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$\\big](x)=$`}</Latex>
+          <strong className={stylesPosts.green}>
+            <Latex>$c$</Latex>
+          </strong>
+          <Latex>$\cdot$</Latex>
+          <Latex>{`$\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$(x)$`}</Latex>
+        </li>
+      ) : (
+        <li>
+          Multiplicación por constantes:{' '}
+          <Latex>{`$\\lim\\limits_{x\\to x_0}\\big[$`}</Latex>
+          <strong className={stylesPosts.green}>
+            <Latex>$c$</Latex>
+          </strong>
+          <Latex>$\cdot$</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$\\big](x)=$`}</Latex>
+          <strong className={stylesPosts.green}>
+            <Latex>$c$</Latex>
+          </strong>
+          <Latex>$\cdot$</Latex>
+          <Latex>{`$\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$(x)$`}</Latex>
+        </li>
+      )}
+      <br />
+      <Mafs viewBox={{x: [0, 2], y: [0, 7]}}>
+        <Coordinates.Cartesian />
+        <Plot.OfX
+          y={(x) =>
+            roundTwoDecimals(Math.abs(2 - c1.y)) *
+            ((x - 2.1) * (x + 1) * (x - 1) + 1)
+          }
+        />
+        <Plot.OfX
+          y={(x) => (x - 2.1) * (x + 1) * (x - 1) + 1}
+          color={Theme.pink}
+        />
+        <MafsLatex
+          at={[3, 4]}
+          color={Theme.pink}
+          tex={String.raw`
+            f
+          `}
+        />
+        <Line.Segment point1={[4, 2]} point2={[4, 4]} weight={3} />
+        {c1.element}
+        <Text
+          x={c1.x}
+          y={c1.y}
+          attach='e'
+          color={Theme.green}
+          attachDistance={17}>
+          c = {roundTwoDecimals(Math.abs(2 - c1.y))}
+        </Text>
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, 1]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, 1]}
+          point2={[1, 1]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <MafsLatex
+          at={[-0.3, 1]}
+          color={Theme.blue}
+          tex={String.raw`
+            L
+          `}
+        />
+
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, roundTwoDecimals(Math.abs(2 - c1.y))]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, roundTwoDecimals(Math.abs(2 - c1.y))]}
+          point2={[1, roundTwoDecimals(Math.abs(2 - c1.y))]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <MafsLatex
+          at={[-0.3, roundTwoDecimals(Math.abs(2 - c1.y))]}
+          color={Theme.blue}
+          tex={String.raw`
+            L
+          `}
+        />
+        <MafsLatex
+          at={[-0.65, roundTwoDecimals(Math.abs(2 - c1.y))]}
+          color={Theme.green}
+          tex={String.raw`
+            c
+          `}
+        />
+      </Mafs>
+      <br />
+      {lang === 'en' ? (
+        <li>
+          Sum of functions: <Latex>{`$\\lim\\limits_{x\\to x_0}\\big($`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$+$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$\\big)(x)=$`}</Latex>
+          <Latex>{`$\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$(x) +$`}</Latex>
+          <Latex>{`$\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$(x)$`}</Latex>
+        </li>
+      ) : (
+        <li>
+          Suma de funciones:{' '}
+          <Latex>{`$\\lim\\limits_{x\\to x_0}\\big($`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$+$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$\\big)(x)=$`}</Latex>
+          <Latex>{`$\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$(x) +$`}</Latex>
+          <Latex>{`$\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$(x)$`}</Latex>
+        </li>
+      )}
+      <br />
+      <Mafs viewBox={{x: [0, 2], y: [0, 7]}}>
+        <Coordinates.Cartesian />
+        {translateG.element}
+        <Plot.OfX
+          y={(x) => (-x + 1) * (x - 1) + translateG.y + 1}
+          color={Theme.yellow}
+        />
+        <Plot.OfX
+          y={(x) => (x - 2.1) * (x + 1) * (x - 1) + 1}
+          color={Theme.pink}
+        />
+        <Plot.OfX
+          y={(x) =>
+            (x - 2.1) * (x + 1) * (x - 1) +
+            1 +
+            (-x + 1) * (x - 1) +
+            translateG.y +
+            1
+          }
+          color={Theme.blue}
+        />
+        <MafsLatex
+          at={[3, 4]}
+          color={Theme.pink}
+          tex={String.raw`
+            f
+          `}
+        />
+        <MafsLatex
+          at={[3.5, 0.5]}
+          color={Theme.yellow}
+          tex={String.raw`
+            g
+          `}
+        />
+        <MafsLatex
+          at={[-1.6, 3]}
+          color={Theme.blue}
+          tex={String.raw`
+            f+g
+          `}
+        />
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, 1]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, 1]}
+          point2={[1, 1]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <MafsLatex
+          at={[-0.3, 1]}
+          color={Theme.pink}
+          tex={String.raw`
+            L_1
+          `}
+        />
+
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, translateG.y]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, translateG.y + 1]}
+          point2={[1, translateG.y + 1]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <MafsLatex
+          at={[-0.4, translateG.y + 1]}
+          color={Theme.yellow}
+          tex={String.raw`
+            L_2
+          `}
+        />
+        <MafsLatex
+          at={[-0.3, 1 + translateG.y + 1]}
+          color={Theme.blue}
+          tex={String.raw`
+            L
+          `}
+        />
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, translateG.y + 2]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, translateG.y + 2]}
+          point2={[1, translateG.y + 2]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+      </Mafs>
+      <br />
+      {lang === 'en' ? (
+        <li>
+          Product of functions:{' '}
+          <Latex>{`$\\lim\\limits_{x\\to x_0}\\big($`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$\\cdot$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$\\big)(x)=$`}</Latex>
+          <Latex>{`$\\big(\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$(x)\\big)$`}</Latex>
+          <Latex>{`$\\big(\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$(x)\\big)$`}</Latex>
+        </li>
+      ) : (
+        <li>
+          Multiplicación de functiones:{' '}
+          <Latex>{`$\\lim\\limits_{x\\to x_0}\\big($`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$\\cdot$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$\\big)(x)=$`}</Latex>
+          <Latex>{`$\\big(\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$(x)\\big)$`}</Latex>
+          <Latex>{`$\\big(\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$(x)\\big)$`}</Latex>
+        </li>
+      )}
+      <br />
+      <Mafs viewBox={{x: [0, 2], y: [0, 7]}}>
+        <Coordinates.Cartesian />
+        <Plot.OfX y={(x) => (-x + 1) * (x - 1) + 2} color={Theme.yellow} />
+        <Plot.OfX
+          y={(x) =>
+            ((x - 2.1) * (x + 1) * (x - 1) + translateF.y - 2.1) *
+            ((-x + 1) * (x - 1) + 2)
+          }
+          color={Theme.blue}
+        />
+        <Plot.OfX
+          y={(x) => (x - 2.1) * (x + 1) * (x - 1) + translateF.y - 2.1}
+          color={Theme.pink}
+        />
+        {translateF.element}
+        <MafsLatex
+          at={[3, 4]}
+          color={Theme.pink}
+          tex={String.raw`
+            f
+          `}
+        />
+        <MafsLatex
+          at={[3.5, 0.5]}
+          color={Theme.yellow}
+          tex={String.raw`
+            g
+          `}
+        />
+        <MafsLatex
+          at={[-2, 6]}
+          color={Theme.blue}
+          tex={String.raw`
+            fg
+          `}
+        />
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, translateF.y - 2.1]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, translateF.y - 2.1]}
+          point2={[1, translateF.y - 2.1]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <MafsLatex
+          at={[-0.31, translateF.y - 2.1]}
+          color={Theme.pink}
+          tex={String.raw`
+            L_1
+          `}
+        />
+
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, 2]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, 2]}
+          point2={[1, 2]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <MafsLatex
+          at={[-0.4, 2]}
+          color={Theme.yellow}
+          tex={String.raw`
+            L_2
+          `}
+        />
+        <MafsLatex
+          at={[-0.3, 2 * (translateF.y - 2.1)]}
+          color={Theme.blue}
+          tex={String.raw`
+            L
+          `}
+        />
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, 2 * (translateF.y - 2.1)]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, 2 * (translateF.y - 2.1)]}
+          point2={[1, 2 * (translateF.y - 2.1)]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+      </Mafs>
+      <br />
+      {lang === 'en' ? (
+        <li>
+          Division of functions: If{' '}
+          <Latex>{`$\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$(x)\\neq0$`}</Latex>, then
+          <Latex>{`$\\lim\\limits_{x\\to x_0}\\big($`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$/$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$\\big)(x)=$`}</Latex>
+          <Latex>{`$\\big(\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$(x)\\big)/$`}</Latex>
+          <Latex>{`$\\big(\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$(x)\\big)$`}</Latex>
+        </li>
+      ) : (
+        <li>
+          División de funciones: Si{' '}
+          <Latex>{`$\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$(x)\\neq0$`}</Latex>, entonces
+          <Latex>{`$\\lim\\limits_{x\\to x_0}\\big($`}</Latex>
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$/$`}</Latex>
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$\\big)(x)=$`}</Latex>
+          <Latex>{`$\\big(\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.pink}>
+            <Latex>$f$</Latex>
+          </strong>
+          <Latex>{`$(x)\\big)/$`}</Latex>
+          <Latex>{`$\\big(\\lim\\limits_{x\\to x_0}$`}</Latex>{' '}
+          <strong className={stylesPosts.yellow}>
+            <Latex>$g$</Latex>
+          </strong>
+          <Latex>{`$(x)\\big)$`}</Latex>
+        </li>
+      )}
+      <br />
+      <Mafs viewBox={{x: [0, 2], y: [0, 7]}}>
+        <Coordinates.Cartesian />
+        <Plot.OfX y={(x) => 0.6 * x * x + (x - 4) + 5} color={Theme.yellow} />
+        <Plot.OfX
+          y={(x) =>
+            (0.4 * x * x + (x - 4) + 2 + translateF2.y + 2) /
+            (0.6 * x * x + (x - 4) + 5)
+          }
+          color={Theme.blue}
+        />
+        <Plot.OfX
+          y={(x) => 0.4 * x * x + (x - 4) + 2 + translateF2.y + 2}
+          color={Theme.pink}
+        />
+        {translateF2.element}
+        <MafsLatex
+          at={[1.7, 6.3]}
+          color={Theme.pink}
+          tex={String.raw`
+            f
+          `}
+        />
+        <MafsLatex
+          at={[-3.4, 6]}
+          color={Theme.yellow}
+          tex={String.raw`
+            g
+          `}
+        />
+        <MafsLatex
+          at={[5, 1.3]}
+          color={Theme.blue}
+          tex={String.raw`
+            f/g
+          `}
+        />
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, 1.4 + translateF2.y]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, 1.4 + translateF2.y]}
+          point2={[1, 1.4 + translateF2.y]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <MafsLatex
+          at={[-0.31, 1.4 + translateF2.y]}
+          color={Theme.pink}
+          tex={String.raw`
+            L_1
+          `}
+        />
+
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, 2.6]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, 2.6]}
+          point2={[1, 2.6]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <MafsLatex
+          at={[-0.4, 2.6]}
+          color={Theme.yellow}
+          tex={String.raw`
+            L_2
+          `}
+        />
+        <MafsLatex
+          at={[-0.3, (1.4 + translateF2.y) / 2.6]}
+          color={Theme.blue}
+          tex={String.raw`
+            L
+          `}
+        />
+        <Line.Segment
+          point1={[1, 0]}
+          point2={[1, (1.4 + translateF2.y) / 2.6]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
+        />
+        <Line.Segment
+          point1={[0, (1.4 + translateF2.y) / 2.6]}
+          point2={[1, (1.4 + translateF2.y) / 2.6]}
+          style='dashed'
+          color={Theme.blue}
+          weight={3}
         />
       </Mafs>
     </PostLayout>
