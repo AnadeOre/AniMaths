@@ -1211,7 +1211,7 @@ export default function limitFunctions() {
         </li>
       ) : (
         <li>
-          Multiplicación de functiones:{' '}
+          Multiplicación de funciones:{' '}
           <Latex>{`$\\lim\\limits_{x\\to x_0}\\big($`}</Latex>
           <strong className={stylesPosts.pink}>
             <Latex>$f$</Latex>

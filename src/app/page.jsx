@@ -12,7 +12,7 @@ export default function Home() {
       </h1>
       {lang === 'en' ? (
         <p className={styles.description}>
-          The website where you learn maths with animations.
+          A website to learn maths with animations.
         </p>
       ) : (
         <p className={styles.description}>
